@@ -1,0 +1,58 @@
+<div class="empty" *ngIf="!sortedCartItems.length">
+    <div class="title">Cart is empty</div>
+    <a  routerLink="/menu">Go to menu</a>
+</div>
+
+<div class="body" *ngIf="sortedCartItems.length">
+    <div class="card-row">
+        <div class="card" *ngFor="let item of sortedCartItems">
+            <div class="img">
+                <img [src]="item.img" alt="">
+            </div>
+        
+            <div class="info">
+                <div class="name">
+                    {{item.name}}
+                </div>
+            
+                <div class="price">
+                    {{item.price * item.amount | currency}}
+                </div>
+                <div class="amount-body">
+                    <button class="changeAmount" (click)="decreaseAmount(item.name)">-</button>
+                    <div class="amount">
+                        {{item.amount}}
+                    </div>
+                    <button class="changeAmount" (click)="increaseAmount(item.name,  item.img, item.price)">+</button>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    
+    <div class="checkout-row">
+        <div class="total">
+            Total price: {{totalPrice | currency}}
+        </div>
+        <button class="checkout" (click)="checkOut()">Checkout</button>
+    </div>
+
+</div>
+
+<app-modal-window (modalWindowClose)="closeModal()" [modalIsOpen]="checkoutIsOpen" *ngIf="checkoutIsOpen">
+    <div class="items-info" *ngFor="let item of sortedCartItems">
+        <div class="name">{{item.name}}</div>
+        <div class="price">{{(item.price | currency) + ' x ' + item.amount}}</div>
+    </div>
+    <div class="delivery-info">
+        <div class="checkbox-row">
+            <input [(ngModel)]="payment" class="checkbox" type="checkbox">  
+        </div>
+
+        Payment upon receipt
+    </div>
+    <div class="submit">
+        <button [disabled]="!payment" (click)="confirm()">Confirm</button>
+    </div>
+</app-modal-window>
+

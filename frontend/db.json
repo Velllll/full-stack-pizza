@@ -1,0 +1,138 @@
+
+{
+    "category": [
+        {
+          "title":"Pizza", 
+          "positions":[
+              {
+                "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+                "name":"Pepperoni ham and cheese",
+                "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+                "price":11
+              },
+              {
+                "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+                "name":"Pepperoni",
+                "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+                "price":11
+              },
+              {
+                "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+                "name":"Pepperoni",
+                "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+                "price":11
+              },
+              {
+                "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+                "name":"Pepperoni",
+                "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+                "price":11
+              },
+              {
+                "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+                "name":"Pepperoni",
+                "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+                "price":11
+              },
+              {
+                "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+                "name":"Pepperoni",
+                "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+                "price":11
+              }
+          ]
+        },
+
+        {
+          "title":"Drinks", 
+          "positions":[
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/d30242be31454f698db2028aed954e40_292x292.jpeg",
+              "name":"Chocolate milkshake",
+              "discription":"It's a shock! Chocolate milkshake with creamy ice cream and signature cocoa",
+              "price":4
+            },
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/d30242be31454f698db2028aed954e40_292x292.jpeg",
+              "name":"Chocolate milkshake",
+              "discription":"It's a shock! Chocolate milkshake with creamy ice cream and signature cocoa",
+              "price":4
+            }
+        
+          ]
+        }
+      
+    ],
+
+    "popular": {
+        "title":"Order Frequently", 
+        "positions":[
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+              "name":"Pepperoni ham and cheese",
+              "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+              "price":11
+            },
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+              "name":"Pepperoni",
+              "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+              "price":11
+            },
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/d30242be31454f698db2028aed954e40_292x292.jpeg",
+              "name":"Chocolate milkshake",
+              "discription":"It's a shock! Chocolate milkshake with creamy ice cream and signature cocoa",
+              "price":4
+            },
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+              "name":"Pepperoni ham and cheese",
+              "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+              "price":11
+            },
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+              "name":"Pepperoni",
+              "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+              "price":11
+            },
+            {
+              "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/d30242be31454f698db2028aed954e40_292x292.jpeg",
+              "name":"Chocolate milkshake",
+              "discription":"It's a shock! Chocolate milkshake with creamy ice cream and signature cocoa",
+              "price":4
+            }
+
+        ]
+    },
+      
+      
+  
+
+  "specialOffers": 
+    
+      [
+        {
+            "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+            "name":"Pepperoni ham and cheese",
+            "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+            "price":11,
+            "discount": 0.2
+        },
+        {
+            "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/bf3377af7cfe4962915668d14bb8d0f4_292x292.jpeg",
+            "name":"Pepperoni",
+            "discription":"Spicy pepperoni, extra portion of mozzarella, tomato sauce",
+            "price":11,
+            "discount": 0.3
+        }
+    ],
+
+    "mainImgUrl": 
+    {
+      "mainImgUrl":"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F06%2F15%2Fmozzarella-pizza-margherita-FT-RECIPE0621.jpg"
+    }
+  
+
+}

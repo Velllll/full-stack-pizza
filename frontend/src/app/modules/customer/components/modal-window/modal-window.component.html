@@ -1,0 +1,6 @@
+<div *ngIf="modalIsOpen" class="overlay" (click)="closeModal()">
+    <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="close" (click)="closeModal()">&times;</div>
+        <ng-content></ng-content>
+    </div>
+</div>
