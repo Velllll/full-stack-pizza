@@ -1,0 +1,43 @@
+<div class="wrapper">
+    <div class="background">
+        <img src="" alt="">
+    </div>
+    <div class="panel">
+        <div class="panel-header">
+            <h1>LOGIN</h1>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+            <div class="ipt email" >
+                <input formControlName="email" type="email">
+                <div class="ipt-title">
+                    Email
+                </div>
+                <div 
+                *ngIf="this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched" 
+                class="err">
+                    Email is required
+                </div>
+            </div>
+
+            <div class="ipt password" >
+                <input formControlName="password" type="password">
+                <div class="ipt-title">
+                    Password
+                </div>
+                <div 
+                *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched"
+                class="err">
+                    Email is required (min length = 8)
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button [disabled]="loginForm.invalid" class="login-button">Login</button>
+            </div>
+        </form>
+
+        <div class="singUp">
+            Don't hane an account? <a routerLink="/registration">Sing Up</a>
+        </div>
+    </div>
+</div>

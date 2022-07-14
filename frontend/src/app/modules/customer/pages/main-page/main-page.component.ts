@@ -46,13 +46,4 @@ export class MainPageComponent implements OnInit, OnDestroy {
   }
 
 
-  addToCart(obj: {img: string, name: string, price: number}) {
-    this.store.dispatch(setItem(obj))
-  }
-
-  getPrice(price: number, discount: number) {
-    if(discount === 0) return price
-    return price * (1 - discount / 100)
-  }
-
 }

@@ -13,17 +13,26 @@ import { IPositions } from '../../interfaces/category';
 export class MenuPageComponent implements OnInit, OnDestroy {
 
   catrgoryPizza$!: Observable<IPositions[]>
-  catrgorySubscription!: Subscription
+  catrgoryPizzaSubscription!: Subscription
+  catrgoryDrinks$!: Observable<IPositions[]>
+  catrgoryDrinksSubscription!: Subscription
+
   isLoading: boolean = true
 
   constructor(
     private http: HttpClient,
-    private store: Store
   ) { }
 
   ngOnInit(): void {
     this.catrgoryPizza$ = this.http.get<IPositions[]>('http://localhost:5000/pages/category/pizza')
-    this.catrgorySubscription = this.catrgoryPizza$.subscribe({
+    this.catrgoryPizzaSubscription = this.catrgoryPizza$.subscribe({
+      next: () => {
+        this.isLoading = false
+      }
+    })
+
+    this.catrgoryDrinks$ = this.http.get<IPositions[]>('http://localhost:5000/pages/category/drinks')
+    this.catrgoryDrinksSubscription = this.catrgoryPizza$.subscribe({
       next: () => {
         this.isLoading = false
       }
@@ -31,15 +40,8 @@ export class MenuPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.catrgorySubscription.unsubscribe()
+    this.catrgoryPizzaSubscription.unsubscribe()
+    this.catrgoryDrinksSubscription.unsubscribe()
   }
 
-  addToCart(obj: {img: string, name: string, price: number}) {
-    this.store.dispatch(setItem(obj))
-  }
-
-  getPrice(price: number, discount: number) {
-    if(discount === 0) return price
-    return price * (1 - discount / 100)
-  }
 }

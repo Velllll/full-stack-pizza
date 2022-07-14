@@ -1,0 +1,18 @@
+<div class="hits-title">
+    {{title}}
+</div>
+<div class="line"></div>
+
+<div class="card-row">
+    <div class="card" *ngFor="let position of hits">
+        <div class="img">
+            <img [src]="position.img" alt="">
+        </div>
+        <div class="title-row">
+            <div class="title">{{position.name}}</div>
+        </div>
+        <div class="price prev">{{position.price | currency}}</div>
+        <div class="price">{{getPrice(position.price, position.discount) | currency}}</div>
+        <div class="btn" (click)="addToCart({img: position.img, name: position.name, price: getPrice(position.price, position.discount)})"><button>Buy</button></div>
+    </div>
+</div>

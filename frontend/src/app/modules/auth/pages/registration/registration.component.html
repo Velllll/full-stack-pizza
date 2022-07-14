@@ -1,0 +1,43 @@
+<div class="wrapper">
+    <div class="panel">
+        <div class="panel-header">
+            <h1>Registration</h1>
+        </div>
+        <form [formGroup]="registrationForm" (ngSubmit)="submitRegistration()">
+            <div class="ipt email" >
+                <input formControlName="email" type="email">
+                <div class="ipt-title">
+                    Email
+                </div>
+                <div 
+                *ngIf="this.registrationForm.get('email')?.invalid && this.registrationForm.get('email')?.touched" 
+                class="err">
+                    Email is required
+                </div>
+            </div>
+
+            <div class="ipt password" >
+                <div class="ipt_password_row">
+                    <input formControlName="password" type="password">
+                    <div class="ipt-title">
+                        Password
+                    </div>
+                </div>
+                <div 
+                *ngIf="this.registrationForm.get('password')?.invalid && this.registrationForm.get('password')?.touched"
+                class="err">
+                    Email is required (min length = 8)
+                </div>
+            </div>
+
+
+            <div class="button-row">
+                <button [disabled]="registrationForm.invalid" class="login-button">Register</button>
+            </div>
+        </form>
+
+        <div class="singUp">
+            Do you hane an account? <a routerLink="/login">Login</a>
+        </div>
+    </div>
+</div>

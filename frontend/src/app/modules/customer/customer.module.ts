@@ -17,6 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
+import { CategoryComponent } from './components/category/category.component';
+import { MainPageHitsComponent } from './components/main-page-hits/main-page-hits.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ModalWindowComponent } from './components/modal-window/modal-window.com
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    CategoryComponent,
+    MainPageHitsComponent
   ],
   imports: [
     CommonModule,
