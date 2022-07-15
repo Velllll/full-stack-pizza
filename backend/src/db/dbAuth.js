@@ -4,11 +4,11 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME_PAGES,
+    database: process.env.DB_NAME_AUTH,
 }).promise()
 
 connection.connect()
-.then(() => console.log("CONECTED TO PAGES DATABASE"))
+.then(() => console.log("CONECTED TO AUTH DATABASE"))
 .catch((err)=> console.log(err.message))
 
 module.exports = connection
