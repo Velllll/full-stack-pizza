@@ -14,6 +14,9 @@
                 class="err">
                     Email is required
                 </div>
+                <div class="err" *ngIf="errDuplicate">
+                    Email registred
+                </div>
             </div>
 
             <div class="ipt password" >

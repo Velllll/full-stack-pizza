@@ -1,5 +1,9 @@
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,17 +11,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup
 
-  constructor() { }
+  loginForm!: FormGroup
+  response$!: Observable<{token: string, role: string}>
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      'email': new FormControl('', [
+      'email': new FormControl('admin@admin.com', [
         Validators.required,
         Validators.email
       ]),
-      'password': new FormControl('',[
+      'password': new FormControl('admin123',[
         Validators.required,
         Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
       ]),
@@ -25,6 +35,16 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin() {
-
+    this.response$ = this.http.post<{token: string, role: string}>('http://localhost:5000/auth/login', this.loginForm.value)
+    this.response$.subscribe({
+      next: (r) => {
+        this.authService.setToken(r.token)
+        if(r.role === "ADMIN") {
+          this.router.navigate(['admin'])
+        } else {
+          this.router.navigate([''])
+        }
+      }
+    })
   }
 }
