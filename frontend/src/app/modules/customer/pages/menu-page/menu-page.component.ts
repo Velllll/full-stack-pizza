@@ -17,6 +17,8 @@ export class MenuPageComponent implements OnInit, OnDestroy {
   catrgoryDrinks$!: Observable<IPositions[]>
   catrgoryDrinksSubscription!: Subscription
 
+  products$!: Observable<IPositions[]>
+
   isLoading: boolean = true
 
   constructor(
@@ -37,6 +39,11 @@ export class MenuPageComponent implements OnInit, OnDestroy {
         this.isLoading = false
       }
     })
+
+
+    this.products$ = this.http.get<IPositions[]>('http://localhost:5000/pages/category')
+
+    
   }
 
   ngOnDestroy(): void {
@@ -44,4 +51,15 @@ export class MenuPageComponent implements OnInit, OnDestroy {
     this.catrgoryDrinksSubscription.unsubscribe()
   }
 
+
+  getSortedByCategory(products: IPositions[]): {title: string, products: IPositions[]}[] {
+    const titleProductsArray = [...new Set(products.map(p => p.title))]
+    .map(title => {
+      return {
+        title,
+        products: products.filter(product => product.title === title)
+      }
+    })
+    return titleProductsArray
+  }
 }

@@ -1,29 +1,29 @@
 
-    <div class="category" >
-      <div class="category-title">{{title}}</div>
+    <div class="category" *ngFor="let productsByCategory of catrgorys">
+      <div class="category-title">{{productsByCategory.title}}</div>
 
       <div class="line"></div>
 
       <div class="catygory-row" >
-        <div class="card" *ngFor="let category of catrgorys">
+        <div class="card" *ngFor="let product of productsByCategory.products">
             <div class="img">
-                <img [src]="category.img" alt="">
+                <img [src]="product.img" alt="">
             </div>
 
             <div class="discription">
                 <div class="title">
-                    {{category.name}}
+                    {{product.name}}
                 </div>
                 <div class="discription-body">
-                    {{category.discription}}
+                    {{product.discription}}
                 </div>
                 <div class="discription-price">
-                    <div *ngIf="category.discount" class="price prev">{{category.price | currency}}</div>
-                    <div class="price">{{getPrice(category.price, category.discount) | currency}}</div>
+                    <div *ngIf="product.discount" class="price prev">{{product.price | currency}}</div>
+                    <div class="price">{{getPrice(product.price, product.discount) | currency}}</div>
                 </div>
             </div>
             <div class="btn">
-                <button class="buy" (click)="addToCart({img: category.img, name: category.name, price: getPrice(category.price, category.discount)})">Buy</button>
+                <button class="buy" (click)="addToCart({img: product.img, name: product.name, price: getPrice(product.price, product.discount)})">Buy</button>
             </div>
         </div>
       </div>

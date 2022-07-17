@@ -2,10 +2,6 @@
     <app-loader [loading]="isLoading"></app-loader>
 </div>
 
-<div class="body" *ngIf="catrgoryPizza$ | async as catrgorys">
-    <app-category [title]="'Pizza'" [catrgorys]="catrgorys"></app-category>
-</div>
-
-<div class="body" *ngIf="catrgoryDrinks$ | async as catrgorys">
-    <app-category [title]="'Drinks'" [catrgorys]="catrgorys"></app-category>
+<div class="body" *ngIf="products$ | async as products">
+    <app-category [catrgorys]="getSortedByCategory(products)"></app-category>
 </div>

@@ -1,3 +1,4 @@
+import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,7 +17,6 @@ import { reducers } from './store';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MainPageHitsComponent } from './components/main-page-hits/main-page-hits.component';
 
@@ -31,9 +31,9 @@ import { MainPageHitsComponent } from './components/main-page-hits/main-page-hit
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ModalWindowComponent,
     CategoryComponent,
-    MainPageHitsComponent
+    MainPageHitsComponent,
+    ModalWindowComponent
   ],
   imports: [
     CommonModule,

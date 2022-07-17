@@ -11,10 +11,7 @@ import { setItem } from '../../store/cart.store';
 export class CategoryComponent implements OnInit {
 
   @Input()
-  title!: string
-
-  @Input()
-  catrgorys!: IPositions[]
+  catrgorys!: {title: string, products: IPositions[]}[]
 
   constructor(
     private store: Store

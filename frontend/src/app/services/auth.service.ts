@@ -29,18 +29,19 @@ export class AuthService {
       }),
       error: err => console.log(err)
     })
-    response$.subscribe
+    return response$
   }
 
   logout() {
     localStorage.removeItem('user_access_token')
     this.router.navigate(['/'])
   }
+  
   getRole() {
-    let info$ = this.http.post<any>('http://localhost:5000/auth/islogin', {token: this.getToken()})
+    let role$ = this.http.post<any>('http://localhost:5000/auth/islogin', {token: this.getToken()})
     .pipe(
       map(r => (r.role))
     )
-    return info$
+    return role$
   }
 }

@@ -1,0 +1,38 @@
+<div class="body" *ngIf="productsResponse$ | async as products">
+    <div class="category" *ngFor="let productsByCategory of getSortedByCategory(products)">
+        <div class="category-info">
+            <div class="category-title">{{productsByCategory.title}}</div>
+            <button class="edit">Edit all category</button>
+        </div>
+
+  
+        <div class="line"></div>
+  
+        <div class="catygory-row" >
+          <div class="card" *ngFor="let product of productsByCategory.products">
+            <div class="img">
+                  <img [src]="product.img" alt="">
+              </div>
+  
+              <div class="discription">
+                  <div class="title">
+                      {{product.name}}
+                  </div>
+                  <div class="discription-body">
+                      {{product.discription}}
+                  </div>
+                  <div class="discription-price">
+                      <div *ngIf="product.discount" class="price prev">{{product.price | currency}}</div>
+                      <div class="price">{{getPrice(product.price, product.discount) | currency}}</div>
+                  </div>
+              </div>
+              <div class="btn">
+                  <button class="edit" (click)="editProduct(product.category_id)">Edit</button>
+              </div>
+              
+              
+            </div>
+        </div>
+      </div>
+</div>
+

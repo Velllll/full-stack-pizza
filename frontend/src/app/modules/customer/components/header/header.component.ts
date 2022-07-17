@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 
 import { Store } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
@@ -15,12 +16,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   menuIsOpen: boolean = false
   cartIsOpen: boolean = true
   currentUrlSubscription!: Subscription
-
+  isLogedInSubscription?: Subscription 
   cartPositionAmount$!: Observable<number>
 
   constructor(
     private router: Router,
     private store: Store,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentUrlSubscription.unsubscribe()
+    this.isLogedInSubscription?.unsubscribe()
   }
 
   goTohomePage() {
@@ -53,6 +56,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goToLogin() {
-    this.router.navigate(['login'])
+    const isLogedIn$ = this.authService.isLogedIn()
+    this.isLogedInSubscription = isLogedIn$.subscribe({
+      next: data => {
+        console.log(data.role === "ADMIN")
+        if(data.role === "ADMIN") return this.router.navigate(['/admin'])
+        if(data.role === "USER") return this.router.navigate(['/'])
+        return this.router.navigate(['/login'])
+      }
+    })
   }
 }

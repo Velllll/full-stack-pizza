@@ -1,0 +1,25 @@
+.header {
+    background-color: rgb(0, 0, 0);
+
+    .row {
+        padding: 0 10px;
+        height: 50px;
+        font-size: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 35px;
+        margin: 0 auto;
+        color: rgb(255, 255, 255);
+        max-width: 1100px;
+    }
+    a {
+        color: rgb(255, 255, 255);
+    }
+
+    .logout {
+        border: 1px white solid;
+        border-radius: 10px;
+        padding: 0 15px;
+    }
+}
