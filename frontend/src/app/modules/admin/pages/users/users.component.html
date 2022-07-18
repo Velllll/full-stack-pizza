@@ -1,1 +1,19 @@
-<p>users works!</p>
+<div class="row" *ngIf="users$ | async as users">
+    <div class="card-row" *ngFor="let user of users">
+        <div class="user-card" >
+            <div class="info id">
+                ID: {{user.id_user}}
+            </div>
+            <div class="info email">
+                EMAIL: {{user.email}}
+            </div>
+            <div class="info status">
+                STATUS: {{user.role}}
+            </div>
+            <div class="delete">
+                <button (click)="deleteUser(user.id_user)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+</div>

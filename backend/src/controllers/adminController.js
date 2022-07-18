@@ -3,7 +3,7 @@ const dbProducts = require('../db/dbPages')
 
 class AdminController {
     async getUsers(req, res) {
-        dbUsers.query("SELECT id_user, email, role FROM users")
+        dbUsers.query("SELECT id_user, email, role FROM users WHERE role = 'USER'")
         .then(data => {
             console.log('ADMIN gets data about users')
             res.json(data[0])
@@ -11,6 +11,18 @@ class AdminController {
         .catch(err => {
             console.log(err)
             res.json({message: "error geting data about users"})
+        })
+    }
+
+    async deleteUser(req, res) {
+        const id = req.params.id
+        dbUsers.query("DELETE FROM users WHERE id_user = ?", [id])
+        .then(() => {
+            res.json({message: `USER WITH ID:${id} WAS DELETED`})
+        })
+        .catch(err => {
+            console.log(err)
+            res.json({message: `USER WITH ID:${id} WAS NOT DELETED`})
         })
     }
 
@@ -45,6 +57,28 @@ class AdminController {
         ])
         .then(() => res.json({message: `Product id: ${category_id} was uppdate`}))
         .catch(err => res.json({message: "ERROR"}))
+    }
+
+    async deleteProduct(req, res) {
+        const productId = req.params.id
+        dbProducts.query("DELETE FROM category WHERE category_id = ?", [productId])
+        .then(() => res.json({message: "PRODUCT WAS DELETE"}))
+        .catch((err) => {
+            console.log(err)
+            res.json({message: "PRODUCT WAS NOT DELETE"})
+        })
+    }
+
+    async addProduct(req, res) {
+        const {title, img, name, discription, price, discount} = req.body
+        dbProducts.query("INSERT INTO category (title, img, name, discription, price, discount) values (?, ?, ?, ?, ?, ?)", [title, img, name, discription, price, discount])
+        .then(() => {
+            res.json({message: `${name} WAS ADDED`})
+        })
+        .catch(err => {
+            console.log(err)
+            res.json({message: `${name} WAS NOT ADDED`})
+        })
     }
 }
 

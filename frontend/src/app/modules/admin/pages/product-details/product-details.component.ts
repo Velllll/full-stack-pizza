@@ -1,6 +1,6 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './../../../../services/auth.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IPositions } from './../../../customer/interfaces/category';
 import { Router } from '@angular/router';
 
@@ -18,6 +18,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   productId!: string
   errName = false
   infoForm!: FormGroup
+  productSubscription!: Subscription
+  update$?: Observable<IPositions[]>
+  updateSubscription?: Subscription
 
   constructor(
     private http: HttpClient,
@@ -50,7 +53,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
    this.product$ = this.http.get<IPositions[]>('http://localhost:5000/admin/products/' + this.productId, {
     headers: {"Authorization": "Bearer " + this.authService.getToken()}
    })
-   this.product$.subscribe({
+   this.productSubscription = this.product$.subscribe({
     next: (data) => {
       const {title, img, name, discription, price, discount} = data[0]
       this.infoForm.setValue({title, img, name, discription, price, discount})
@@ -60,24 +63,30 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    
+    this.productSubscription.unsubscribe()
+    this.updateSubscription?.unsubscribe()
   }
 
-
-
   updateProduct() {
-    this.http.put<IPositions[]>('http://localhost:5000/admin/products/' + this.productId, 
+    this.update$ = this.http.put<IPositions[]>('http://localhost:5000/admin/products/' + this.productId, 
     {...this.infoForm.value, category_id: this.productId},
     {
       headers: {"Authorization": "Bearer " + this.authService.getToken()}
     })
+    this.updateSubscription = this.update$.subscribe({
+      next: () => this.router.navigate(['/admin/products'])
+    })
+  }
+
+  deleteProduct() {
+    this.http.delete('http://localhost:5000/admin/products/' + this.productId,
+    {headers: {"Authorization": "Bearer " + this.authService.getToken()}}
+    )
     .subscribe({
-      next: data => {
-        this.errName = true
-        console.log(data)
+      next: () => {
+        this.router.navigate(['/admin/products'])
       }
     })
-  
   }
   
 }

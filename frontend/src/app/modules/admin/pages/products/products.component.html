@@ -1,8 +1,10 @@
 <div class="body" *ngIf="productsResponse$ | async as products">
+    <div class="add">
+        <button class="edit" (click)="addProduct()">Add product</button>
+    </div>
     <div class="category" *ngFor="let productsByCategory of getSortedByCategory(products)">
         <div class="category-info">
             <div class="category-title">{{productsByCategory.title}}</div>
-            <button class="edit">Edit all category</button>
         </div>
 
   
@@ -11,7 +13,7 @@
         <div class="catygory-row" >
           <div class="card" *ngFor="let product of productsByCategory.products">
             <div class="img">
-                  <img [src]="product.img" alt="">
+                  <img [src]="product.img">
               </div>
   
               <div class="discription">

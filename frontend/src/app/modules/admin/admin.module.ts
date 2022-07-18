@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { AddProductComponent } from './pages/add-product/add-product.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     HeaderComponent,
     UsersComponent,
     ProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    AddProductComponent
   ],
   imports: [
     CommonModule,

@@ -1,13 +1,13 @@
 <h1>Product details</h1>
-<div class="body" *ngIf="product$ | async as product">
-    <form class="row" [formGroup]="infoForm" (ngSubmit)="updateProduct()">
+<div class="body" >
+    <form class="row" [formGroup]="infoForm" (ngSubmit)="addProduct()">
         Category: <input formControlName="title"  type="text" >
         Name: <input formControlName="name"  type="text" >
         Discription: <input type="text" formControlName="discription" >
         Image url/path: <input type="text" formControlName="img" >
         Price: <input type="text" formControlName="price" >
         Discount: <input type="text" formControlName="discount" >
-        <button class="save">Apply changes</button>
+        <button [disabled]="infoForm.invalid" class="save">Add product</button>
     </form>
-    <button class="delete" (click)="deleteProduct()">Delete product</button>
+   
 </div>
