@@ -1,0 +1,10 @@
+<h1>Customer info</h1>
+
+<div class="row" *ngIf="userInfo$ | async as userInfo">
+<div class="email">
+   Email: {{userInfo[0].email}}
+</div>
+<div class="logout">
+    <button (click)="logout()">Logout</button>
+</div>
+</div>

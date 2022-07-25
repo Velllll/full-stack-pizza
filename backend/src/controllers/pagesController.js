@@ -1,4 +1,4 @@
-const db = require('../db/dbPages')
+const db = require('../db/db')
 
 class PagesController {
 

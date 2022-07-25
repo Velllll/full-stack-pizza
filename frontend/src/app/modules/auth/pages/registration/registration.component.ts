@@ -22,11 +22,11 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
-      'email': new FormControl('user@user.com', [
+      'email': new FormControl('', [
         Validators.required,
         Validators.email,
       ]),
-      'password': new FormControl('user1234', [
+      'password': new FormControl('', [
         Validators.required,
         Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
       ]),

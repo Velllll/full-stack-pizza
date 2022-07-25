@@ -1,9 +1,8 @@
-const dbUsers = require('../db/dbAuth')
-const dbProducts = require('../db/dbPages')
+const db = require('../db/db')
 
 class AdminController {
     async getUsers(req, res) {
-        dbUsers.query("SELECT id_user, email, role FROM users WHERE role = 'USER'")
+        db.query("SELECT id_user, email, role FROM users WHERE role = 'USER'")
         .then(data => {
             console.log('ADMIN gets data about users')
             res.json(data[0])
@@ -16,7 +15,7 @@ class AdminController {
 
     async deleteUser(req, res) {
         const id = req.params.id
-        dbUsers.query("DELETE FROM users WHERE id_user = ?", [id])
+        db.query("DELETE FROM users WHERE id_user = ?", [id])
         .then(() => {
             res.json({message: `USER WITH ID:${id} WAS DELETED`})
         })
@@ -27,7 +26,7 @@ class AdminController {
     }
 
     async getProducts(req, res) {
-        dbProducts.query('SELECT * FROM category')
+        db.query('SELECT * FROM category')
         .then(data => {
             console.log('ADMIN gets products')
             res.json(data[0])
@@ -40,7 +39,7 @@ class AdminController {
 
     async getProductById(req, res) {
         const productId = req.params.id
-        dbProducts.query("SELECT * FROM category WHERE category_id = ?", [productId])
+        db.query("SELECT * FROM category WHERE category_id = ?", [productId])
         .then(data => {
             res.json(data[0])
         })
@@ -52,7 +51,7 @@ class AdminController {
 
     async editProductById(req, res) {
         const {title, img, name, discription, price, discount, category_id} = req.body
-        dbProducts.query("UPDATE category SET title = ?, img = ?, name = ?, discription = ?, price = ?, discount = ? WHERE category_id = ?", [
+        db.query("UPDATE category SET title = ?, img = ?, name = ?, discription = ?, price = ?, discount = ? WHERE category_id = ?", [
             title, img, name, discription, price, discount, category_id
         ])
         .then(() => res.json({message: `Product id: ${category_id} was uppdate`}))
@@ -61,7 +60,7 @@ class AdminController {
 
     async deleteProduct(req, res) {
         const productId = req.params.id
-        dbProducts.query("DELETE FROM category WHERE category_id = ?", [productId])
+        db.query("DELETE FROM category WHERE category_id = ?", [productId])
         .then(() => res.json({message: "PRODUCT WAS DELETE"}))
         .catch((err) => {
             console.log(err)
@@ -71,7 +70,7 @@ class AdminController {
 
     async addProduct(req, res) {
         const {title, img, name, discription, price, discount} = req.body
-        dbProducts.query("INSERT INTO category (title, img, name, discription, price, discount) values (?, ?, ?, ?, ?, ?)", [title, img, name, discription, price, discount])
+        db.query("INSERT INTO category (title, img, name, discription, price, discount) values (?, ?, ?, ?, ?, ?)", [title, img, name, discription, price, discount])
         .then(() => {
             res.json({message: `${name} WAS ADDED`})
         })

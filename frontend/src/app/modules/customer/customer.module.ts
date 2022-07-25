@@ -19,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MainPageHitsComponent } from './components/main-page-hits/main-page-hits.component';
+import { CustomerPanelComponent } from './pages/customer-panel/customer-panel.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MainPageHitsComponent } from './components/main-page-hits/main-page-hit
     HomeComponent,
     CategoryComponent,
     MainPageHitsComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    CustomerPanelComponent
   ],
   imports: [
     CommonModule,

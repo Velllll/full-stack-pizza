@@ -59,9 +59,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const isLogedIn$ = this.authService.isLogedIn()
     this.isLogedInSubscription = isLogedIn$.subscribe({
       next: data => {
-        console.log(data.role === "ADMIN")
         if(data.role === "ADMIN") return this.router.navigate(['/admin'])
-        if(data.role === "USER") return this.router.navigate(['/'])
+        if(data.role === "USER") return this.router.navigate([`/settings`])
         return this.router.navigate(['/login'])
       }
     })
